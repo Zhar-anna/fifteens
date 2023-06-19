@@ -1,38 +1,67 @@
-.App {
+Table{
+  width: 400px;
+  height: 400px;
+  margin: auto;
+  font-size: 30px;
+  font-weight: bold;
   text-align: center;
+  border-collapse: collapse;
+  border-spacing: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+Table td{
+  padding: 0;
+  margin: 0;
+  border: 3px solid #007aff;
+  width: 100px;
+  height: 100px;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+Table td:hover{
+  background-color: #5f998b73;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+Table .p-3{
+  padding: 25px;
+}
+
+Table .empty{
+  background-color: white;
+}
+
+Table .selected{
+  background-color: #007aff;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.Table .hover{
+  background-color: #5f998b;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+Table .row1 .col1,
+Table .row1 .col2{
+  border-top: none;
+}
+
+.Table .row3 .col1,
+.Table .row3 .col2{
+  border-bottom: none;
+}
+
+Table .col1,
+Table .col3{
+  border-left: none;
+}
+
+Table .col2,
+Table .col4{
+  border-right: none;
+} 
+
+Table .solution{
+  font-size: 16px;
+  padding: 10px;
+  text-align: center;
 }
