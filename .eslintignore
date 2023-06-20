@@ -2,4 +2,6 @@
 dist
 build
 
-src/App.js
+src/App.jsx
+src/init.jsx
+src/index.js
