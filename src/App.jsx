@@ -14,9 +14,10 @@ function App(values) {
   const fourthLine = values.children.slice(-3);
   grid.push(fourthLine);
   grid[3].push('');
-  // console.log(grid)
+
   const [newgrid, makeAction] = useState(grid);
-  // console.log(document.getElementsByClassName('striped'));
+  const [count, setCount] = useState(0);
+
   const handleKeyDown = (event) => {
     let linWithEmpty;
     for(let i = 0; i < newgrid.length; i++) {
@@ -25,26 +26,50 @@ function App(values) {
       }
     };
     const columnWithEmpty = newgrid[linWithEmpty].indexOf('');
-
-    
     if (event.key === 'ArrowDown') {
-      // const copymatrix = newgrid;
+      if (linWithEmpty === 0) {
+        return;
+      }
+      newgrid[linWithEmpty][columnWithEmpty] = newgrid[linWithEmpty - 1][columnWithEmpty];
       newgrid[linWithEmpty - 1][columnWithEmpty] = '';
-      console.log(newgrid);
-      makeAction(newgrid)
+      makeAction(newgrid);
+      setCount(count + 1);
     }
     else if(event.key === 'ArrowUp') {
-
+      if (linWithEmpty === 3) {
+        return;
+      }
+      newgrid[linWithEmpty][columnWithEmpty] = newgrid[linWithEmpty + 1][columnWithEmpty];
+      newgrid[linWithEmpty + 1][columnWithEmpty] = '';
+      makeAction(newgrid);
+      setCount(count + 1);
     }
     else if(event.key === 'ArrowLeft') {
-
+      if (columnWithEmpty === 3) {
+        return;
+      }
+      newgrid[linWithEmpty][columnWithEmpty] = newgrid[linWithEmpty][columnWithEmpty + 1];
+      newgrid[linWithEmpty][columnWithEmpty + 1] = '';
+      makeAction(newgrid);
+      setCount(count + 1);
     }
     else if(event.key === 'ArrowRight') {
-      
+      if (columnWithEmpty === 0) {
+        return;
+      }
+      newgrid[linWithEmpty][columnWithEmpty] = newgrid[linWithEmpty][columnWithEmpty - 1];
+      newgrid[linWithEmpty][columnWithEmpty - 1] = '';
+      makeAction(newgrid);
+      setCount(count + 1);
     }
   };
   return (
     <Table onKeyDown={handleKeyDown} striped bordered hover tabIndex={0}>
+      <thead>
+        <tr>
+          <th colSpan={3}>Количество ходов: {count}</th>
+        </tr>
+      </thead>
       <tbody>
         <tr>
           { newgrid[0].map((el) =>  <td id={el} key={el} className="p-3">{el}</td>)}
