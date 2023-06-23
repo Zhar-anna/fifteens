@@ -1,6 +1,6 @@
 Table{
   width: 400px;
-  height: 400px;
+  height: auto;
   margin: auto;
   font-size: 30px;
   font-weight: bold;
@@ -12,6 +12,7 @@ Table{
   margin-top: 10%;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 20px;
 }
 Table thead {
   margin-bottom: 20px;
@@ -72,4 +73,16 @@ Table .solution{
   font-size: 16px;
   padding: 10px;
   text-align: center;
+}
+
+div {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  font-size: 40px;
+}
+
+div > div {
+  color: #0867cc;
+  font-weight: bold;
 }

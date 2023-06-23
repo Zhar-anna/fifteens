@@ -1,5 +1,4 @@
 import React, { useState }  from 'react';
-import Number from './Number.jsx'
 import { Table } from 'react-bootstrap';
 import './App.css';
 
@@ -17,6 +16,7 @@ function App(values) {
 
   const [newgrid, makeAction] = useState(grid);
   const [count, setCount] = useState(0);
+  const [wintext, setWinText] = useState('');
 
   const handleKeyDown = (event) => {
     let linWithEmpty;
@@ -26,6 +26,10 @@ function App(values) {
       }
     };
     const columnWithEmpty = newgrid[linWithEmpty].indexOf('');
+    const winArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, '']
+    if (JSON.stringify(newgrid.flat()) === JSON.stringify(winArray)) {
+      setWinText('Вы выиграли!');
+    }
     if (event.key === 'ArrowDown') {
       if (linWithEmpty === 0) {
         return;
@@ -64,27 +68,30 @@ function App(values) {
     }
   };
   return (
-    <Table onKeyDown={handleKeyDown} striped bordered hover tabIndex={0}>
-      <thead>
-        <tr>
-          <th colSpan={3}>Количество ходов: {count}</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          { newgrid[0].map((el) =>  <td id={el} key={el} className="p-3">{el}</td>)}
-        </tr>
-        <tr>
-        { newgrid[1].map((el) => <td id={el} key={el} className="p-3">{el}</td>)}
-        </tr>
-        <tr>
-        { newgrid[2].map((el) => <td id={el} key={el} className="p-3">{el}</td>)}
-        </tr>
-        <tr>
-        { newgrid[3].map((el) => <td id={el} key={el} className="p-3">{el}</td>)}
-        </tr>
-      </tbody>
-    </Table>
+    <>
+      <Table onKeyDown={handleKeyDown} striped bordered hover tabIndex={0}>
+        <thead>
+          <tr>
+            <th colSpan={3}>Количество ходов: {count}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            { newgrid[0].map((el) =>  <td id={el} key={el} className="p-3">{el}</td>)}
+          </tr>
+          <tr>
+          { newgrid[1].map((el) => <td id={el} key={el} className="p-3">{el}</td>)}
+          </tr>
+          <tr>
+          { newgrid[2].map((el) => <td id={el} key={el} className="p-3">{el}</td>)}
+          </tr>
+          <tr>
+          { newgrid[3].map((el) => <td id={el} key={el} className="p-3">{el}</td>)}
+          </tr>
+        </tbody>
+      </Table>
+      <div>{wintext}</div>
+    </>
   );
 }
 
