@@ -1,2 +1,2 @@
 # 15puzzle game. 
-### press the *PageUp*, !!(син)PageDown!!, !!(син)PageLeft!! or !!(синPageRight)!! buttons to move cells with numbers to an empty cell
+### press the *PageUp*, *PageDown*, *PageLeft* or *PageRight* buttons to move cells with numbers to an empty cell
