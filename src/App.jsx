@@ -69,7 +69,7 @@ function App(values) {
   };
   return (
     <>
-      <Table onKeyDown={handleKeyDown()} striped bordered hover tabIndex={0}>
+      <Table onKeyDown={handleKeyDown} striped bordered hover tabIndex={0}>
         <thead>
           <tr>
             <th colSpan={3}>Количество ходов: {count}</th>
